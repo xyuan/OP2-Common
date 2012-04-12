@@ -92,15 +92,6 @@ typedef struct {
 typedef part_core *part;
 
 /*******************************************************************************
-* Data structure to hold sets for latency hiding
-*******************************************************************************/
-
-typedef struct {
-  op_set core_set;
-  op_set noncore_set;
-} set_part_core;
-
-/*******************************************************************************
 * Data Type to hold MPI performance measures
 *******************************************************************************/
 
@@ -273,6 +264,8 @@ void op_partition_ptscotch(op_map primary_map);
 #ifdef __cplusplus
 }
 #endif
+
+extern "C" void METIS_PartGraphKway(int*, int*, int*,int*,int*, int*, int*,int*,int*,int*, int*);
 
 #endif /* __OP_MPI_CORE_H */
 
