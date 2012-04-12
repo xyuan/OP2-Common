@@ -351,12 +351,12 @@ int main(int argc, char **argv)
   op_diagnostic_output();
 
   //trigger partitioning and halo creation routines
-  op_partition("PARMETIS", "KWAY", NULL, pecell, p_x);
+  op_partition("PARMETIS", "KWAY", NULL, pcell, p_x);
 
   //initialise timers for total execution wall time
   op_timers(&cpu_t1, &wall_t1);
 
-  niter = 1000;
+  niter = 1;
   for(int iter=1; iter<=niter; iter++) {
 
     //save old flow solution
