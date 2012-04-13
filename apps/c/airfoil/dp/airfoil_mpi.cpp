@@ -322,10 +322,12 @@ int main(int argc, char **argv)
 
   // declare sets, pointers, datasets and global constants
 
+
   op_set nodes  = op_decl_set(nnode,  "nodes");
   op_set edges  = op_decl_set(nedge,  "edges");
   op_set bedges = op_decl_set(nbedge, "bedges");
   op_set cells  = op_decl_set(ncell,  "cells");
+
 
   op_map pedge   = op_decl_map(edges, nodes,2,edge,  "pedge");
   op_map pecell  = op_decl_map(edges, cells,2,ecell, "pecell");
@@ -351,7 +353,7 @@ int main(int argc, char **argv)
   op_diagnostic_output();
 
   //trigger partitioning and halo creation routines
-  op_partition("PARMETIS", "KWAY", NULL, pcell, p_x);
+  op_partition("PARMETIS", "KWAY", NULL, pecell, p_x);
 
   //initialise timers for total execution wall time
   op_timers(&cpu_t1, &wall_t1);
