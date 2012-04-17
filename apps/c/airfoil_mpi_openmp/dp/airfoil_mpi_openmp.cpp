@@ -394,7 +394,7 @@ int main(int argc, char **argv)
 
   //trigger partitioning and halo creation routines
   //op_partition("PTSCOTCH", "KWAY", edges, pecell, p_x);
-  op_partition("PARMETIS", "KWAY", edges, pecell, p_x);
+  op_partition("PARMETIS", "KWAY", edges, pecell, p_x, 1024);
 
 
   //initialise timers for total execution wall time
