@@ -51,6 +51,10 @@
 
 double alpha;
 
+// jac header file
+
+#include "check_result.h"
+
 //
 // OP header file
 //
@@ -81,6 +85,10 @@ void op_par_loop_update(char const *, op_set,
 
 #include "res.h"
 #include "update.h"
+
+// Error tolerance in checking correctness
+
+#define TOLERANCE 1e-12
 
 // define problem size
 
@@ -204,6 +212,7 @@ int main(int argc, char **argv)
   }
 
   op_timing_output();
+  int result = check_result<double>(u, NN, TOLERANCE);
   op_exit();
 
   free(pp);
@@ -211,4 +220,7 @@ int main(int argc, char **argv)
   free(u);
   free(du);
   free(r);
+
+  return result;
 }
+

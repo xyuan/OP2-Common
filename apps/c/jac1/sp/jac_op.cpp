@@ -58,6 +58,10 @@ float alpha;
 #include "op_lib_cpp.h"
 #include "op_lib_cpp.h"
 
+// jac header file
+
+#include "check_result.h"
+
 //
 // op_par_loop declarations
 //
@@ -81,6 +85,10 @@ void op_par_loop_update(char const *, op_set,
 
 #include "res.h"
 #include "update.h"
+
+// Error tolerance in checking correctness
+
+#define TOLERANCE 1e-6
 
 // define problem size
 
@@ -204,6 +212,8 @@ int main(int argc, char **argv)
   }
 
   op_timing_output();
+  int result = check_result<float>(u, NN, TOLERANCE);
   op_exit();
+  return result;
 }
 

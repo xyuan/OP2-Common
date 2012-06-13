@@ -53,6 +53,10 @@
 
 double alpha;
 
+// jac header file
+
+#include "check_result.h"
+
 //
 // OP header file
 //
@@ -66,6 +70,10 @@ double alpha;
 
 #include "res.h"
 #include "update.h"
+
+// Error tolerance in checking correctness
+
+#define TOLERANCE 1e-12
 
 //
 // op_par_loop declarations
@@ -315,6 +323,9 @@ int main(int argc, char **argv)
 
   //print total time for niter interations
   op_printf("Max total runtime = %f\n",wall_t2-wall_t1);
+
+  int result = check_result<double>(u, NN, TOLERANCE);
   op_exit();
+  return result;
 }
 
